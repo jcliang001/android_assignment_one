@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--xmlns: specifies the xml namespace for a document-->
+<!--every view needs a width and height-->
+<!--vertical is the orientation that we want to set up the app-->
+<!--16dp is the padding inside our container to add buffer space on the screen-->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99ffcc"
+        android:padding="16dp" android:orientation="vertical">
+    <!--Nested views go from here-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp" android:gravity="center">
+        <TextView
+                android:textSize="24sp"
+                android:text="@string/Score" android:textAlignment="textEnd" android:layout_height="wrap_content"
+                android:layout_width="wrap_content" android:layout_weight="1"/>
+
+        <TextView
+                android:id="@+id/score_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_weight="1" tools:text="#" android:textAlignment="textStart"/>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/question_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            tools:text="Question Text will display here"/>
+    <RadioGroup
+            android:id="@+id/selection_radio_group"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/true_button"
+                android:layout_width="wrap_content"
+                android:background="@color/true_button_color"
+                android:layout_marginRight="50dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:text="@string/True"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"/>
+        <Button
+                android:id="@+id/false_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:text="@string/False"
+                android:layout_gravity="center"
+                android:background="@color/false_button_color"
+        />
+
+    </RadioGroup>
+    <FrameLayout
+            android:id="@+id/direction_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/previous_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/Previous"
+                android:backgroundTintMode="@color/direction_button_color"
+
+        />
+
+
+        <Button
+                android:id="@+id/select_cheat_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/cheat"
+                android:background="@drawable/my_button_bg"
+
+        />
+
+        <Button
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Next"
+                android:layout_gravity="end"
+                android:backgroundTintMode="@color/direction_button_color"
+
+        />
+
+    </FrameLayout>
+
+</LinearLayout>

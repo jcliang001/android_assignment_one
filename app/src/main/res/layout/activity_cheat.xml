@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99ffcc"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginBottom="100dp"
+            android:text="@string/cheat_hint"
+            app:autoSizeTextType="uniform"/>
+
+
+    <Button
+            android:id="@+id/cheat_button"
+            android:text="@string/show_the_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textColor="#111111"
+            app:autoSizeTextType="uniform"
+            android:background="@drawable/my_button_bg"
+
+    />
+    <TextView
+            android:id="@+id/cheat_answer_location"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:layout_marginBottom="150dp"
+            android:visibility="invisible"
+            app:autoSizeTextType="uniform"
+            tools:text="@string/answer_init"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+

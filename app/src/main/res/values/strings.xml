@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Kotlin Quiz</string>
+    <string name="Score">Score: </string>
+    <string name="True">TRUE</string>
+    <string name="False">FALSE</string>
+    <string name="Previous">PREVIOUS</string>
+    <string name="Next">NEXT</string>
+    <string name="question1">Kotlin requires semi-colons at the end of every statement.</string>
+    <string name="question2">By default, all memebers of class are public type.</string>
+    <string name="question3">Val type variable can have a setter function.</string>
+    <string name="question4">A function can be equal to an if expression.</string>
+    <string name="correct_toast">Your knowledge is undoubtedly top notch!</string>
+    <string name="incorrect_toast">You must consult the elders for additional training.</string>
+    <string name="cheat_hint">Are you really sure you want to cheat?</string>
+    <string name="show_the_answer">SHOW THE ANSWER</string>
+    <string name="answer_init">The Answer is</string>
+    <string name="cheat">CHEAT!</string>
+    <string name="cheat_toast">Cheaters never prosper.</string>
+</resources>
