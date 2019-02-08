@@ -38,9 +38,11 @@ object QuizMaster {
 
     fun getCurrentAnswer() = getCurrentQuestion().isAnswerTrue
 
-    fun isAnswerCorrect(answer: Boolean) =
-        if(answer == getCurrentAnswer()){
-            currentScore++
+    fun isAnswerCorrect(answer: Boolean, isCheater : Boolean) =
+        if(answer == getCurrentAnswer() ){
+            if(!isCheater)
+                currentScore++
+
             true
         }
 

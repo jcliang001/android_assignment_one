@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_quiz.*
 
 class QuizActivity : AppCompatActivity() {
 
-    private final var isCheater = 0
+    private final var isCheater = false
 
     private fun setCurrentScoreText() {
         score_text_view.text = QuizMaster.currentScore.toString()
@@ -23,8 +23,8 @@ class QuizActivity : AppCompatActivity() {
     }
     private fun checkAnswer(suppliedAnswer: Boolean) {
 
-        if( QuizMaster.isAnswerCorrect(suppliedAnswer) ) {
-            if (isCheater == 0) {
+        if( QuizMaster.isAnswerCorrect(suppliedAnswer, isCheater) ) {
+            if ( !isCheater ) {
                 Toast.makeText(
                     baseContext,
                     R.string.correct_toast,
@@ -55,6 +55,7 @@ class QuizActivity : AppCompatActivity() {
             QuizMaster.moveToPreviousQuestion()
         }
         updateQuestion()
+        isCheater = false
     }
 
     companion object {
@@ -93,15 +94,15 @@ class QuizActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         Log.d(LOG_TAG,"onSaveInstanceState() called")
-
+        outState?.putBoolean ( CURRENT_ISCHEATER, isCheater)
         outState?.putInt ( CURRENT_SCORE_KEY, QuizMaster.currentScore )
         outState?.putInt ( CURRENT_QUESTION_KEY, QuizMaster.currentQuestionIndex )
-        outState?.putInt ( CURRENT_ISCHEATER, isCheater)
+
     }
     //    launchCheat() method needs to do two steps: (1) create the explicit intent (2) start the
 //    activity.
     private fun launchCheat(){
-        isCheater = 1
+        isCheater = true
         val intent = CheatActivity.createIntent( baseContext,
                                                  QuizMaster.getCurrentAnswer())
         startActivityForResult(intent, REQUEST_CODE_CHEAT)
@@ -131,7 +132,7 @@ class QuizActivity : AppCompatActivity() {
             }
         }
 
-        isCheater = if(CheatActivity.wasAnswerShown(data)) 1 else 0
+        isCheater = CheatActivity.wasAnswerShown(data)
     }
 
 
@@ -145,8 +146,9 @@ class QuizActivity : AppCompatActivity() {
 
             val scoreHistory = savedInstanceState.getInt( CURRENT_SCORE_KEY)
             val priorQuestion = savedInstanceState.getInt( CURRENT_QUESTION_KEY)
-            isCheater = savedInstanceState.getInt(CURRENT_ISCHEATER)
+            isCheater = savedInstanceState.getBoolean(CURRENT_ISCHEATER)
             QuizMaster.currentScore = scoreHistory
+
             QuizMaster.currentQuestionIndex = priorQuestion
         }
         select_cheat_button.setOnClickListener{launchCheat()}
@@ -155,7 +157,7 @@ class QuizActivity : AppCompatActivity() {
         next_button.setOnClickListener { moveToQuestion(1) }
         previous_button.setOnClickListener { moveToQuestion(-1) }
         updateQuestion()
-        isCheater = 0
+
 
     }
 
